@@ -1,0 +1,255 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Mom ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:white;
+overflow:hidden;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+/* Floating Hearts */
+
+.heart{
+position:absolute;
+color:#ff4d6d;
+font-size:18px;
+animation:float 8s linear infinite;
+opacity:0.7;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+50%{
+opacity:1;
+}
+100%{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+
+/* Main Card */
+
+.card{
+width:90%;
+max-width:700px;
+padding:40px;
+text-align:center;
+border-radius:30px;
+background:white;
+box-shadow:0 10px 30px rgba(255,0,76,0.15);
+z-index:2;
+}
+
+h1{
+font-size:3rem;
+font-weight:800;
+color:#e63946;
+margin-bottom:15px;
+}
+
+p{
+font-size:1.2rem;
+line-height:1.8;
+color:#444;
+}
+
+.btn{
+padding:12px 25px;
+border:none;
+border-radius:50px;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+margin:15px;
+transition:0.3s;
+}
+
+.yes{
+background:#e63946;
+color:white;
+}
+
+.yes:hover{
+transform:scale(1.05);
+}
+
+.no{
+background:white;
+color:#e63946;
+border:2px solid #e63946;
+position:absolute;
+}
+
+.hidden{
+display:none;
+}
+
+/* Birthday Page */
+
+.birthday-page{
+background:#e63946;
+color:white;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:20px;
+text-align:center;
+}
+
+.birthday-page img{
+width:250px;
+height:250px;
+border-radius:50%;
+object-fit:cover;
+border:6px solid white;
+margin-bottom:20px;
+}
+
+.birthday-page h2{
+font-size:3rem;
+margin-bottom:20px;
+}
+
+.message{
+max-width:700px;
+font-size:1.3rem;
+line-height:1.8;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Hearts -->
+
+<script>
+for(let i=0;i<40;i++){
+let heart=document.createElement("div");
+heart.innerHTML="❤";
+heart.classList.add("heart");
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(5+Math.random()*5)+"s";
+heart.style.fontSize=(10+Math.random()*20)+"px";
+document.body.appendChild(heart);
+}
+</script>
+
+<!-- First Screen -->
+
+<div class="card" id="questionPage">
+
+<h1>Hi Mom ❤️</h1>
+
+<p>
+Before we begin, I have a very important question...
+</p>
+
+<br>
+
+<h2 style="color:#e63946">
+Do you accept me as your daughter?
+</h2>
+
+<br>
+
+<button class="btn yes" onclick="showBirthday()">
+YES ❤️
+</button>
+
+<button class="btn no" id="noBtn">
+NO 😜
+</button>
+
+</div>
+
+<!-- Birthday Screen -->
+
+<div class="birthday-page" id="birthdayPage">
+
+<img src="mom.jpg" alt="Mom">
+
+<h2>Happy Birthday Mom ❤️</h2>
+
+<div class="message">
+
+Thank you Mom... ❤️
+
+This is the day when my biggest supporter,
+my safest place,
+my strongest protector,
+and my goddess was born.
+
+Thank you for every sacrifice,
+every prayer,
+every sleepless night,
+and every time you stood beside me when nobody else did.
+
+I may not always say it,
+but I am grateful for you every single day.
+
+You are not only my mother,
+you are my inspiration.
+
+I love you endlessly.
+
+✨ Happy Birthday Mom ✨
+
+</div>
+
+</div>
+
+<script>
+
+const noBtn=document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover",()=>{
+
+const x=Math.random()*(window.innerWidth-150);
+const y=Math.random()*(window.innerHeight-100);
+
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+
+});
+
+function showBirthday(){
+
+document.getElementById("questionPage").style.display="none";
+
+document.getElementById("birthdayPage").style.display="flex";
+
+}
+
+</script>
+
+</body>
+</html>

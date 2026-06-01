@@ -1,0 +1,505 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Mom ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+overflow:hidden;
+background:white;
+height:100vh;
+}
+
+/* Floating Hearts */
+
+.heart{
+position:fixed;
+bottom:-50px;
+color:#e63946;
+animation:float linear infinite;
+pointer-events:none;
+opacity:.8;
+}
+
+@keyframes float{
+from{
+transform:translateY(0);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+to{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+
+/* Screens */
+
+.screen{
+position:absolute;
+width:100%;
+height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:20px;
+text-align:center;
+}
+
+.active{
+display:flex;
+}
+
+.white{
+background:white;
+color:#e63946;
+}
+
+.red{
+background:#e63946;
+color:white;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:30px;
+box-shadow:0 10px 40px rgba(0,0,0,0.15);
+max-width:750px;
+width:90%;
+}
+
+h1{
+font-size:3rem;
+font-weight:800;
+margin-bottom:20px;
+}
+
+h2{
+margin-bottom:20px;
+}
+
+p{
+line-height:1.8;
+font-size:1.1rem;
+}
+
+.btn{
+padding:14px 30px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+font-size:18px;
+font-weight:600;
+margin:10px;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.redBtn{
+background:#e63946;
+color:white;
+}
+
+.whiteBtn{
+background:white;
+color:#e63946;
+}
+
+#noBtn{
+position:absolute;
+}
+
+img{
+width:250px;
+height:250px;
+object-fit:cover;
+border-radius:50%;
+border:8px solid white;
+margin-bottom:20px;
+}
+
+.gift{
+font-size:90px;
+animation:bounce 1s infinite;
+}
+
+@keyframes bounce{
+50%{
+transform:translateY(-10px);
+}
+}
+
+.progress-container{
+width:80%;
+max-width:500px;
+background:#ffd7dc;
+height:30px;
+border-radius:50px;
+overflow:hidden;
+margin-top:20px;
+}
+
+.progress{
+height:100%;
+width:0%;
+background:white;
+}
+
+.memory{
+background:white;
+color:#e63946;
+padding:15px;
+margin:10px;
+border-radius:15px;
+width:90%;
+max-width:500px;
+font-weight:600;
+}
+
+#counter{
+font-size:2rem;
+font-weight:700;
+margin:20px;
+}
+
+#letter{
+display:none;
+background:white;
+color:#e63946;
+padding:25px;
+border-radius:20px;
+margin-top:20px;
+max-width:700px;
+}
+
+.confetti{
+position:fixed;
+top:-20px;
+font-size:20px;
+animation:fall 5s linear infinite;
+pointer-events:none;
+}
+
+@keyframes fall{
+to{
+transform:translateY(120vh) rotate(720deg);
+}
+}
+
+</style>
+</head>
+<body>
+
+<!-- Screen 1 -->
+
+<div class="screen white active" id="screen1">
+
+<div class="card">
+
+<h1>Hi Mom ❤️</h1>
+
+<h2>Do you accept me as your daughter?</h2>
+
+<button class="btn redBtn" onclick="nextScreen(2)">YES ❤️</button>
+
+<button class="btn" id="noBtn">NO 😜</button>
+
+</div>
+
+</div>
+
+<!-- Screen 2 -->
+
+<div class="screen red" id="screen2">
+
+<h1>Question 2 ❤️</h1>
+
+<h2>Who is the best daughter in the world?</h2>
+
+<button class="btn whiteBtn" onclick="nextScreen(3)">Me 😌</button>
+<button class="btn whiteBtn" onclick="nextScreen(3)">Definitely Me 😌</button>
+<button class="btn whiteBtn" onclick="nextScreen(3)">Obviously Me 😌</button>
+
+</div>
+
+<!-- Screen 3 -->
+
+<div class="screen white" id="screen3">
+
+<div class="card">
+
+<h1>One More ❤️</h1>
+
+<h2>How much do you love your daughter?</h2>
+
+<button class="btn redBtn" onclick="loveAnswer()">A Little ❤️</button>
+<button class="btn redBtn" onclick="loveAnswer()">A Lot ❤️❤️</button>
+<button class="btn redBtn" onclick="loveAnswer()">Infinite ♾️❤️</button>
+
+<p id="loveText"></p>
+
+</div>
+
+</div>
+
+<!-- Screen 4 -->
+
+<div class="screen red" id="screen4">
+
+<div class="gift">🎁</div>
+
+<h1>Ready For Your Birthday Surprise?</h1>
+
+<button class="btn whiteBtn" onclick="startLoading()">
+Open Gift 🎁
+</button>
+
+</div>
+
+<!-- Screen 5 -->
+
+<div class="screen red" id="screen5">
+
+<h1>Loading All The Love I Have For Mom ❤️</h1>
+
+<div class="progress-container">
+<div class="progress" id="progress"></div>
+</div>
+
+<h2 id="percent">0%</h2>
+
+</div>
+
+<!-- Screen 6 -->
+
+<div class="screen red" id="screen6" style="overflow-y:auto">
+
+<img src="mom.jpg" alt="Mom">
+
+<h1>Happy Birthday ❤️</h1>
+
+<h2>Deepa's Lovely Mom</h2>
+
+<p style="max-width:700px;padding:20px;">
+
+Thank you Mom... ❤️
+
+Today is the day my biggest supporter,
+my safest place,
+my strongest protector,
+and my goddess was born.
+
+Thank you for every sacrifice,
+every prayer,
+every sleepless night,
+and every hug that healed me.
+
+You have given me strength,
+love and courage throughout my life.
+
+I may not say it every day,
+but I am grateful that I get to call you my Mom.
+
+Happy Birthday ❤️
+
+</p>
+
+<h2>You Have Been Making The World Better For</h2>
+
+<div id="counter"></div>
+
+<h2>Things I Love About You ❤️</h2>
+
+<div class="memory">🌹 Your kindness</div>
+<div class="memory">🌹 Your strength</div>
+<div class="memory">🌹 Your patience</div>
+<div class="memory">🌹 Your endless support</div>
+<div class="memory">🌹 Your beautiful heart</div>
+
+<button class="btn whiteBtn" onclick="showLetter()">
+Read My Secret Letter 💌
+</button>
+
+<div id="letter">
+
+<h2>To My Dear Mom ❤️</h2>
+
+<p>
+
+Thank you for believing in me
+even when I doubted myself.
+
+Thank you for every sacrifice you made,
+every tear you hid,
+and every smile you gave me.
+
+No gift can ever equal
+what you have done for me.
+
+I am proud to be your daughter.
+
+I love you forever and always.
+
+❤️
+
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+/* Hearts */
+
+for(let i=0;i<50;i++){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+heart.innerHTML=Math.random()>0.5?"❤️":"🤍";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(10+Math.random()*25)+"px";
+heart.style.animationDuration=(5+Math.random()*8)+"s";
+
+document.body.appendChild(heart);
+
+}
+
+/* NO Button */
+
+const noBtn=document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover",()=>{
+
+let x=Math.random()*(window.innerWidth-150);
+let y=Math.random()*(window.innerHeight-100);
+
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+
+});
+
+/* Navigation */
+
+function nextScreen(num){
+
+document.querySelectorAll(".screen").forEach(s=>{
+s.classList.remove("active");
+});
+
+document.getElementById("screen"+num).classList.add("active");
+
+}
+
+/* Love Question */
+
+function loveAnswer(){
+
+document.getElementById("loveText").innerHTML=
+"❤️ I knew it! The answer is definitely INFINITE ❤️";
+
+setTimeout(()=>{
+nextScreen(4);
+},2000);
+
+}
+
+/* Loading */
+
+function startLoading(){
+
+nextScreen(5);
+
+let width=0;
+
+let interval=setInterval(()=>{
+
+width++;
+
+document.getElementById("progress").style.width=width+"%";
+document.getElementById("percent").innerHTML=width+"%";
+
+if(width>=100){
+
+clearInterval(interval);
+
+createConfetti();
+
+setTimeout(()=>{
+nextScreen(6);
+},1000);
+
+}
+
+},30);
+
+}
+
+/* Confetti */
+
+function createConfetti(){
+
+for(let i=0;i<120;i++){
+
+let c=document.createElement("div");
+
+c.className="confetti";
+
+c.innerHTML=["🎉","❤️","✨","🎊"][Math.floor(Math.random()*4)];
+
+c.style.left=Math.random()*100+"vw";
+c.style.animationDuration=(3+Math.random()*3)+"s";
+
+document.body.appendChild(c);
+
+}
+
+}
+
+/* Counter */
+
+const birthDate = new Date("1987-08-08");
+
+const today = new Date();
+
+const days = Math.floor(
+(today-birthDate)/(1000*60*60*24)
+);
+
+document.getElementById("counter").innerHTML=
+days.toLocaleString()+" Beautiful Days ❤️";
+
+/* Letter */
+
+function showLetter(){
+
+document.getElementById("letter").style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>
